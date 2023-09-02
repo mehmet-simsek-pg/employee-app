@@ -25,6 +25,10 @@ public class EmployeeController {
 
     @PostMapping("/employees")
     public Employee createEmployee(@RequestBody Employee employee) {
+
+        if (employee == null){
+            throw new IllegalArgumentException("Employee object can't be null");
+        }
         return employeeRepository.save(employee);
     }
 
